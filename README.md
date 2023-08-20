@@ -28,7 +28,7 @@ I also have a .env file that requires the following variables:
 
 - APP_PORT
 - DB_PORT
-- DB_HOST=
+- DB_HOST
 - DB_USER
 - DB_PASS
 - MYSQL_DB
