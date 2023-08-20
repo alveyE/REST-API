@@ -10,15 +10,23 @@ module.exports = {
   createNote: (req, res) => {
     const body = req.body;
 
+    if (!body.title || !body.content) {
+      return res.status(400).json({
+        success: 0,
+        message: "Title and content are required",
+      });
+    }
+
     create(body, (err, results) => {
       if (err) {
+        console.log("STATUS " + res.status);
         console.log(err);
         return res.status(500).json({
           success: 0,
           message: "Connection error",
         });
       }
-      return res.status(200).json({
+      return res.status(201).json({
         success: 1,
         data: results,
       });
@@ -32,7 +40,7 @@ module.exports = {
         return;
       }
       if (!results) {
-        return res.json({
+        return res.status(404).json({
           success: 0,
           message: "Note not found",
         });
@@ -89,7 +97,7 @@ module.exports = {
           message: "Note not Found",
         });
       }
-      return res.json({
+      return res.status(204).json({
         success: 1,
         message: "Note Successfully Deleted",
       });

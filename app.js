@@ -11,3 +11,5 @@ app.use("/api/notes", noteRouter);
 app.listen(process.env.APP_PORT, () => {
   console.log("Server running on PORT : ", process.env.APP_PORT);
 });
+
+module.exports = app;
